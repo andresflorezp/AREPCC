@@ -1,6 +1,6 @@
-function perfomGetRequest1() {
+function perfomGetRequestCC() {
 
-    var resultElement = document.getElementById('getResult1');
+    var resultElement = document.getElementById('getResult2');
     resultElement.innerHTML = '';
 
     axios.get('http://www.apilayer.net/api/list?access_key=358f46478f3fc7ee0ad75639aaf732f5')
@@ -14,25 +14,14 @@ function perfomGetRequest1() {
 }
 
 function genereateSuccesHTMLOutput(response) {
-   
-    return '<h4>Result:</h4>' +
-        '<h5>Body:</h5>' +
-        '<pre>' + Object.keys(response.data.currencies) + '</pre>'
-
-    
-
-}
-
-function generateListaD(){
-    
-    var resultElement = document.getElementById('inputState');
-    var ocurrencies =  Object.keys(response.data.currencies);
-    Object.keys(response.data.currencies).forEach(key => {
+    var S = '<select id="inputState" class="form-control">';
+    let obj = response.data.currencies;
+    Object.keys(obj).forEach(key => {
         let value = obj[key];
-        resultElement.innerHTML+='<option>'+value+'</option>';
-      });
-
-
+       S+= '<option>'+value+'</option>';
+    });
+    S+='</select>'
+    return S;
 }
 
 function genereateErrorHTMLOutput(error) {
@@ -46,7 +35,6 @@ function genereateErrorHTMLOutput(error) {
         '<pre>' + JSON.stringify(error.headers, null, '\t') + '</pre>' +
         '<h5>Body:</h5>' +
         '<pre>' + JSON.stringify(error.data, null, '\t') + '</pre>'
-
 
 }
 
@@ -70,3 +58,5 @@ function perfomGetRequest2() {
             resultElement.innerHTML = genereateErrorHTMLOutput(error);
         })
 }
+
+perfomGetRequestCC()

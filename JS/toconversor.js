@@ -1,6 +1,6 @@
-function perfomGetRequestT() {
+function perfomGetRequestCC() {
 
-    var resultElement = document.getElementById('getResultF');
+    var resultElement = document.getElementById('getResult3');
     resultElement.innerHTML = '';
 
     axios.get('http://www.apilayer.net/api/list?access_key=358f46478f3fc7ee0ad75639aaf732f5')
@@ -14,10 +14,14 @@ function perfomGetRequestT() {
 }
 
 function genereateSuccesHTMLOutput(response) {
-   
-    return '<h4>Result:</h4>' +
-        '<h5>Body:</h5>' +
-        '<pre>' + Object.keys(response.data.currencies) + '</pre>'
+    var S = '<select id="inputState" class="form-control">';
+    let obj = response.data.currencies;
+    Object.keys(obj).forEach(key => {
+        let value = obj[key];
+       S+= '<option>'+value+'</option>';
+    });
+    S+='</select>'
+    return S;
 
 }
 
@@ -55,3 +59,5 @@ function perfomGetRequest2() {
             resultElement.innerHTML = genereateErrorHTMLOutput(error);
         })
 }
+
+perfomGetRequestCC()
