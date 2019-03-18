@@ -1,3 +1,4 @@
+
 function perfomGetRequestCC() {
 
     var resultElement = document.getElementById('getResult2');
@@ -38,25 +39,6 @@ function genereateErrorHTMLOutput(error) {
 
 }
 
-
-function perfomGetRequest2() {
-
-    var resultElement = document.getElementById('getResult2');
-    var todoId = document.getElementById('todoId').value;
-    resultElement.innerHTML = '';
-
-    axios.get('https://jsonplaceholder.typicode.com/todos', {
-        params: {
-            id: todoId
-        }
-    })
-        .then(function (response) {
-
-            resultElement.innerHTML = genereateSuccesHTMLOutput(response);
-        })
-        .catch(function (error) {
-            resultElement.innerHTML = genereateErrorHTMLOutput(error);
-        })
-}
-
 perfomGetRequestCC()
+
+

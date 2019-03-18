@@ -6,14 +6,14 @@ function perfomGetRequestCC() {
     axios.get('http://www.apilayer.net/api/list?access_key=358f46478f3fc7ee0ad75639aaf732f5')
         .then(function (response) {
 
-            resultElement.innerHTML = genereateSuccesHTMLOutput(response);
+            resultElement.innerHTML = genereateSuccesValues(response);
         })
         .catch(function (error) {
-            resultElement.innerHTML = genereateErrorHTMLOutput(error);
+            resultElement.innerHTML = genereateErrorHTMLValues(error);
         })
 }
 
-function genereateSuccesHTMLOutput(response) {
+function genereateSuccesValues(response) {
     var S = '<select id="inputState" class="form-control">';
     let obj = response.data.currencies;
     Object.keys(obj).forEach(key => {
@@ -25,7 +25,7 @@ function genereateSuccesHTMLOutput(response) {
 
 }
 
-function genereateErrorHTMLOutput(error) {
+function genereateErrorHTMLValues(error) {
 
     return '<h4>Result:</h4>' +
         '<h5>Message: </h5>' +
@@ -37,27 +37,6 @@ function genereateErrorHTMLOutput(error) {
         '<h5>Body:</h5>' +
         '<pre>' + JSON.stringify(error.data, null, '\t') + '</pre>'
 
-}
-
-
-function perfomGetRequest2() {
-
-    var resultElement = document.getElementById('getResult2');
-    var todoId = document.getElementById('todoId').value;
-    resultElement.innerHTML = '';
-
-    axios.get('https://jsonplaceholder.typicode.com/todos', {
-        params: {
-            id: todoId
-        }
-    })
-        .then(function (response) {
-
-            resultElement.innerHTML = genereateSuccesHTMLOutput(response);
-        })
-        .catch(function (error) {
-            resultElement.innerHTML = genereateErrorHTMLOutput(error);
-        })
 }
 
 perfomGetRequestCC()
