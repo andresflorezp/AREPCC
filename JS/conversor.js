@@ -3,7 +3,7 @@ function perfomGetRequest1() {
     var resultElement = document.getElementById('getResult1');
     resultElement.innerHTML = '';
 
-    axios.get('https://jsonplaceholder.typicode.com/todos')
+    axios.get('http://www.apilayer.net/api/list?access_key=358f46478f3fc7ee0ad75639aaf732f5')
         .then(function (response) {
 
             resultElement.innerHTML = genereateSuccesHTMLOutput(response);
@@ -14,14 +14,24 @@ function perfomGetRequest1() {
 }
 
 function genereateSuccesHTMLOutput(response) {
-
+   
     return '<h4>Result:</h4>' +
-        '<h5>Status:</h5>' +
-        '<pre>' + response.status + ' ' + response.statusText + '</pre>' +
-        '<h5>Headers:</h5>' +
-        '<pre>' + JSON.stringify(response.headers, null, '\t') + '</pre>' +
         '<h5>Body:</h5>' +
-        '<pre>' + JSON.stringify(response.data, null, '\t') + '</pre>'
+        '<pre>' + Object.keys(response.data.currencies) + '</pre>'
+
+    
+
+}
+
+function generateListaD(){
+    
+    var resultElement = document.getElementById('inputState');
+    var ocurrencies =  Object.keys(response.data.currencies);
+    Object.keys(response.data.currencies).forEach(key => {
+        let value = obj[key];
+        resultElement.innerHTML+='<option>'+value+'</option>';
+      });
+
 
 }
 
