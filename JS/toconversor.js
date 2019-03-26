@@ -3,7 +3,7 @@ function perfomGetRequestCC() {
     var resultElement = document.getElementById('getResult3');
     resultElement.innerHTML = '';
 
-    axios.get('https://lpsi3nehyg.execute-api.us-east-1.amazonaws.com/ConsumirCurrency')
+    axios.get('https://f6k116t4v2.execute-api.us-east-1.amazonaws.com/ConsumirCurrency')
         .then(function (response) {
 
             resultElement.innerHTML = genereateSuccesValues(response);
@@ -14,16 +14,20 @@ function perfomGetRequestCC() {
 }
 
 function genereateSuccesValues(response) {
-    var S = '<select id="inputState" class="form-control">';
-    let obj = response.data.currencies;
+    var S = '<select id="inputState1" class="form-control">';
+    let obj = JSON.parse(response.data);
+    for (var i in response) {
+        console.log(response[i].keys)
+    }
     Object.keys(obj).forEach(key => {
         let value = obj[key];
-       S+= '<option>'+value+'</option>';
+       S+= '<option>'+key+"-"+value+'</option>';
     });
     S+='</select>'
     return S;
 
 }
+
 
 function genereateErrorHTMLValues(error) {
 
