@@ -4,7 +4,7 @@ function perfomGetRequestT() {
     var resultElement = document.getElementById('getResultF');
     resultElement.innerHTML = '';
 
-    axios.get('http://www.apilayer.net/api/list?access_key=358f46478f3fc7ee0ad75639aaf732f5')
+    axios.get('https://lpsi3nehyg.execute-api.us-east-1.amazonaws.com/ConsumirCurrency')
         .then(function (response) {
 
             resultElement.innerHTML = genereateSuccesHTML(response);
